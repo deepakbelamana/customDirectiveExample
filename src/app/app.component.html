@@ -4,14 +4,14 @@
       <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
       <br><br>
       <ul class="list-group">
-        <div *ngIf="onlyOdd">
-          <!-- <li class="list-group-item" *ngFor="let odd of oddNumbers"
+        <!-- <div *ngIf="onlyOdd">
+        <li class="list-group-item" *ngFor="let odd of oddNumbers"
           [ngClass]="{odd : odd%2!==0}"
           [ngStyle]="{backgroundColor: odd % 2 !== 0 ? 'gold' : 'transparent'}"
           appOddNumberStyler
           >
             {{odd }}
-          </li> -->
+          </li>
           <li class="list-group-item" *ngFor="let odd of oddNumbers"
           [ngClass]="{odd : odd%2!==0}"
           appOddNumberStyler [defaultColor]="'yellow'"
@@ -19,11 +19,16 @@
           >
             {{odd }}
           </li>
-        </div>
+        </div> -->
         <div *ngIf="!onlyOdd">
-          <li class="list-group-item"  appEvenNumberHighLighter *ngFor="let even of evenNumbers" >
+          <li class="list-group-item" appEvenNumberHighLighter *ngFor="let even of evenNumbers">
             {{ even }}
           </li>
+        </div>
+        <div *appOddNumberDirective="onlyOdd">
+          <li class="list-group-item" *ngFor="let odd of oddNumbers" [ngClass]="{odd : odd%2!==0}" appOddNumberStyler
+            [defaultColor]="'yellow'" [highlightColor]="'red'">
+            {{odd }}
         </div>
       </ul>
       <hr>
